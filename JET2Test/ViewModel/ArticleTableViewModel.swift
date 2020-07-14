@@ -41,8 +41,8 @@ class ArticleTableViewModel {
     public var count: Int {
         return articles?.count ?? 0
     }
-
-    public func selectedUserLogin(index: Int) -> String {
-        return  ""
+    
+    public func selectedUserProfile(index: Int) -> Article? {
+        return articles?[index]
     }
 }

@@ -26,6 +26,14 @@ class ArticlesViewController: UIViewController {
     }
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destionationViewController = segue.destination as? UserProfileViewController,
+            let selectionIndexPath = tableView.indexPathForSelectedRow {
+            let article = viewModel.selectedUserProfile(index: selectionIndexPath.row)
+            destionationViewController.article = article
+        }
+    }
+    
 }
 
 extension ArticlesViewController : UITableViewDelegate,UITableViewDataSource {
