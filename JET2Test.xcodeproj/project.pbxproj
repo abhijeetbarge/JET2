@@ -26,6 +26,7 @@
 		3F8D87F624BDD8C900A82D14 /* ArticleTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D87F324BDD8C900A82D14 /* ArticleTableViewModel.swift */; };
 		3F8D87F924BDE61700A82D14 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D87F824BDE61700A82D14 /* ArticleTableViewCell.swift */; };
 		3F8D87FB24BE0B9C00A82D14 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D87FA24BE0B9C00A82D14 /* UserProfileViewController.swift */; };
+		3FBAEE9824BEB6B0008F332F /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEE9724BEB6B0008F332F /* ProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		3F8D87F324BDD8C900A82D14 /* ArticleTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewModel.swift; sourceTree = "<group>"; };
 		3F8D87F824BDE61700A82D14 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		3F8D87FA24BE0B9C00A82D14 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		3FBAEE9724BEB6B0008F332F /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				3F8D87F824BDE61700A82D14 /* ArticleTableViewCell.swift */,
+				3FBAEE9724BEB6B0008F332F /* ProgressView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				3F8D87EF24BDD32800A82D14 /* Article.swift in Sources */,
 				3F8D87F624BDD8C900A82D14 /* ArticleTableViewModel.swift in Sources */,
 				3F8D87E424BDD18300A82D14 /* JET2API.swift in Sources */,
+				3FBAEE9824BEB6B0008F332F /* ProgressView.swift in Sources */,
 				3F8D87CC24BDC4A300A82D14 /* ArticlesViewController.swift in Sources */,
 				3F8D87D424BDC4A300A82D14 /* JET2Test.xcdatamodeld in Sources */,
 				3F8D87F924BDE61700A82D14 /* ArticleTableViewCell.swift in Sources */,

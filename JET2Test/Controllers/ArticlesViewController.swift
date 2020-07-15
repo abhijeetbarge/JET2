@@ -17,6 +17,8 @@ class ArticlesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+
         viewModel.getArticals(pageNo:"\(pageNum)" ) { (isNextPageDataAvailable) in
             self.isNextPageAvailable = isNextPageDataAvailable
             DispatchQueue.main.async {

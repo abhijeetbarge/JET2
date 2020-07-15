@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 struct Networking {
 
@@ -16,8 +16,14 @@ struct Networking {
                                         completion: ((_ response: T) -> Void)?) {
         let urlString = endpoint.baseURL.appendingPathComponent(endpoint.path).absoluteString.removingPercentEncoding
         guard let urlRequest = URL(string: urlString ?? "") else { return }
-
+        
+        let progressView = ProgressView(text: "Fetching Data")
+        let window = UIApplication.shared.keyWindow!
+        window.addSubview(progressView)
         let urlSession = URLSession.shared.dataTask(with: urlRequest) { (data, urlResponse, error) in
+            DispatchQueue.main.async {
+                progressView.removeFromSuperview()
+            }
             if let _ = error {
                 return
             }
