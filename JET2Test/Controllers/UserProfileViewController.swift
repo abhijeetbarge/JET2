@@ -21,14 +21,14 @@ class UserProfileViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.title = "User Profile"
         self.setUpUI()
         
     }
     
     func setUpUI() {
-        
-        if let user = self.article?.user,  user.count>0 {
-            self.fullNameLabel.text = "\(user[0].name) \(user[0].lastname)"
+        if let user = article?.user, user.count>0 {
+            self.fullNameLabel.text = "\(String(describing: user[0].name)) \(String(describing: user[0].lastname))"
             self.designationLabel.text = user[0].designation
             self.cityLabel.text = user[0].city
             self.userLogo.maskCircle(url: user[0].avatar)

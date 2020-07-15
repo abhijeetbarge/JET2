@@ -18,7 +18,7 @@ class ArticlesViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-
+        self.title = "Articles"
         viewModel.getArticals(pageNo:"\(pageNum)" ) { (isNextPageDataAvailable) in
             self.isNextPageAvailable = isNextPageDataAvailable
             DispatchQueue.main.async {
@@ -54,7 +54,11 @@ extension ArticlesViewController : UITableViewDelegate,UITableViewDataSource {
         
         let cellViewModel = viewModel.cellViewModel(index: indexPath.row)
         cell.viewModel = cellViewModel
-        if indexPath.row == (viewModel.count - 1) {
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == (viewModel.count-1) {
             //This is last cell
             print("Last page - \(indexPath.row)")
             pageNum += 1
@@ -67,7 +71,6 @@ extension ArticlesViewController : UITableViewDelegate,UITableViewDataSource {
                 }
             }
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

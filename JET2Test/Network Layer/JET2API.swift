@@ -21,9 +21,9 @@ extension JET2API: EndpointType {
     var path: String {
         switch self {
         case .articles(let pageNo):
-            return "/blogs?page=\(pageNo)&limit=10"
+            return "blogs?page=\(pageNo)&limit=10"
         case .users(let pageNo):
-            return "/users?page=\(pageNo)&limit=10"
+            return "users?page=\(pageNo)&limit=10"
         }
     }
 }
