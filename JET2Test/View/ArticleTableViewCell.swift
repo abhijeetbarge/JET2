@@ -46,12 +46,19 @@ class ArticleTableViewCell: UITableViewCell {
 extension UIImageView {
     
     func setImageFromURl(stringImageUrl url: String){
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        activityIndicator.center = self.center
+        activityIndicator.startAnimating()
+        self.addSubview(activityIndicator)
+        //activityIndicator.hidesWhenStopped = true
+
         DispatchQueue.global(qos: .background).async {
             
             if let url = NSURL(string: url) {
                 if let data = NSData(contentsOf: url as URL) {
                     DispatchQueue.main.async {
                         self.image = UIImage(data: data as Data)
+                        activityIndicator.stopAnimating()
                     }
                 }
             }

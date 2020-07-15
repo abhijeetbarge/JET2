@@ -11,18 +11,19 @@ import Foundation
 class ArticleTableViewModel {
 
     private let networking = Networking()
-    private var articles: [Article]?
+    private var articals: [Artical]?
 
     public func getArticals(pageNo: String,
                              completion: ((Bool) -> Void)?) {
         print("Fetching data for Page No : \(pageNo)")
+        CoreDataManager.shared.clearStorage(forEntity: "Artical")
         networking.performNetworkTask(endpoint: JET2API.articles(pageNo: pageNo),
-                                      type: [Article].self) { [weak self] (response) in
+                                      type: [Artical].self) { [weak self] (response) in
                                         if response.count > 0 {
-                                            if self?.articles == nil {
-                                                self?.articles = response
+                                            if self?.articals == nil {
+                                                self?.articals = response
                                             } else {
-                                                self?.articles?.append(contentsOf:response )
+                                                self?.articals?.append(contentsOf:response )
                                             }
                                             completion?(true)
                                         }else{
@@ -31,18 +32,60 @@ class ArticleTableViewModel {
                                         
         }
     }
+    
+    
+    func parseArticleJson(responseData:Data) {
+        
+        let decoder = JSONDecoder()
+        let managedObjectContext = CoreDataManager.shared.managedObjectContext()
+        guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext else {
+            fatalError("Failed to retrieve managed object context Key")
+        }
+        decoder.userInfo[codingUserInfoKeyManagedObjectContext] = managedObjectContext
+        
+        do {
+            let result = try decoder.decode([Artical].self, from: responseData)
+            self.articals = result
+            print(result)
+        } catch let error {
+            print("decoding error: \(error)")
+            
+        }
+        
+        CoreDataManager.shared.clearStorage(forEntity: "Person")
+        CoreDataManager.shared.saveContext()
+        
+        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        print(paths[0])
+        
+        if self.articals?.count ?? 0 > 0 {
+            let encoder = JSONEncoder()
+            do {
+                let encodedData = try encoder.encode(self.articals)
+                print("Endoded data prints below")
+                if let encodedString = String(data: encodedData, encoding: .utf8) {
+                    print(encodedString)
+                }
+            } catch let err {
+                print("encoding error \(err)")
+            }
+        }
+    }
+    
+    
 
     public func cellViewModel(index: Int) -> ArticleTableViewCellModel? {
-        guard let article = articles else { return nil }
+        guard let article = articals else { return nil }
         let articleTableViewCellModel = ArticleTableViewCellModel(article: article[index])
         return articleTableViewCellModel
     }
     
     public var count: Int {
-        return articles?.count ?? 0
+        return articals?.count ?? 0
     }
     
-    public func selectedUserProfile(index: Int) -> Article? {
-        return articles?[index]
+    public func selectedUserProfile(index: Int) -> Artical? {
+        return articals?[index]
     }
 }

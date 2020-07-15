@@ -10,54 +10,39 @@ import Foundation
 
 class ArticleTableViewCellModel {
 
-    private let article: Article
+    private let article: Artical
 
-    init(article: Article) {
+    init(article: Artical) {
         self.article = article
     }
 
-    var userName: String {
-        if let user = article.user, user.count > 0 {
-            return user[0].name
-        }
-        return ""
+    var userName: String? {
+        return article.name
     }
-    var userDesignation: String {
-        if let user = article.user, user.count > 0 {
-            return user[0].designation
-        }
-        return ""
+    var userDesignation: String? {
+        return article.designation
     }
 
     var userLogoUrl: String {
-        if let user = article.user, user.count > 0 {
-            return user[0].avatar
-        }
-        return ""
+        return article.avatar ?? ""
     }
 
-    var articleContent: String {
+    var articleContent: String? {
         return article.content
     }
-    var articleTitle: String {
-        if let media = article.media, media.count > 0 {
-            return media[0].title
-        }
-        return ""
+    var articleTitle: String? {
+            return article.title
     }
 
     var articleUrl: String {
-        if let media = article.media, media.count > 0 {
-            return media[0].image
-        }
-        return ""
+            return article.image ?? ""
     }
 
-    var likes: String {
+    var likes: String? {
         return "\(article.likes/1000)K Likes"
     }
     
-    var comment: String {
+    var comment: String? {
         return "\(article.comments/1000)K Comments"
     }
 }

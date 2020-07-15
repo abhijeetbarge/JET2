@@ -15,6 +15,7 @@ struct Networking {
                                         type: T.Type,
                                         completion: ((_ response: T) -> Void)?) {
         let urlString = endpoint.baseURL.appendingPathComponent(endpoint.path).absoluteString.removingPercentEncoding
+        print("Url : \(String(describing: urlString))")
         guard let urlRequest = URL(string: urlString ?? "") else { return }
         
         let progressView = ProgressView(text: "Fetching Data")
@@ -30,13 +31,15 @@ struct Networking {
             guard let data = data else {
                 return
             }
-            let response = Response(data: data)
-            guard let decoded = response.decode(type) else {
+            var response = Response(data: data)
+            guard let decoded = response.decodeAndSave(type) else {
                 return
             }
+            //guard let decoded = response.decode(type) else {
+            //    return
+            //}
             completion?(decoded)
         }
         urlSession.resume()
     }
-
 }

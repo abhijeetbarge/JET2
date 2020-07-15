@@ -18,7 +18,6 @@
 		3F8D87E424BDD18300A82D14 /* JET2API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D87E124BDD18300A82D14 /* JET2API.swift */; };
 		3F8D87E524BDD18300A82D14 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D87E224BDD18300A82D14 /* NetworkManager.swift */; };
 		3F8D87E624BDD18300A82D14 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D87E324BDD18300A82D14 /* EndpointType.swift */; };
-		3F8D87EC24BDD32800A82D14 /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D87E824BDD32800A82D14 /* Articles.swift */; };
 		3F8D87ED24BDD32800A82D14 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D87E924BDD32800A82D14 /* User.swift */; };
 		3F8D87EE24BDD32800A82D14 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D87EA24BDD32800A82D14 /* Response.swift */; };
 		3F8D87EF24BDD32800A82D14 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D87EB24BDD32800A82D14 /* Article.swift */; };
@@ -27,6 +26,11 @@
 		3F8D87F924BDE61700A82D14 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D87F824BDE61700A82D14 /* ArticleTableViewCell.swift */; };
 		3F8D87FB24BE0B9C00A82D14 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D87FA24BE0B9C00A82D14 /* UserProfileViewController.swift */; };
 		3FBAEE9824BEB6B0008F332F /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEE9724BEB6B0008F332F /* ProgressView.swift */; };
+		3FBAEE9A24BEBA92008F332F /* UserTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEE9924BEBA92008F332F /* UserTableViewCellModel.swift */; };
+		3FBAEE9C24BEBAA1008F332F /* UserTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEE9B24BEBAA1008F332F /* UserTableViewModel.swift */; };
+		3FBAEE9E24BEBDC7008F332F /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEE9D24BEBDC7008F332F /* UserTableViewCell.swift */; };
+		3FBAEEA124BECD3D008F332F /* CodingUserInfoKey+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEEA024BECD3D008F332F /* CodingUserInfoKey+Util.swift */; };
+		3FBAEEA324BECD47008F332F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEEA224BECD47008F332F /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +47,6 @@
 		3F8D87E124BDD18300A82D14 /* JET2API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JET2API.swift; sourceTree = "<group>"; };
 		3F8D87E224BDD18300A82D14 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3F8D87E324BDD18300A82D14 /* EndpointType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
-		3F8D87E824BDD32800A82D14 /* Articles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
 		3F8D87E924BDD32800A82D14 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3F8D87EA24BDD32800A82D14 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		3F8D87EB24BDD32800A82D14 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
@@ -52,6 +55,11 @@
 		3F8D87F824BDE61700A82D14 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		3F8D87FA24BE0B9C00A82D14 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		3FBAEE9724BEB6B0008F332F /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		3FBAEE9924BEBA92008F332F /* UserTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCellModel.swift; sourceTree = "<group>"; };
+		3FBAEE9B24BEBAA1008F332F /* UserTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewModel.swift; sourceTree = "<group>"; };
+		3FBAEE9D24BEBDC7008F332F /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		3FBAEEA024BECD3D008F332F /* CodingUserInfoKey+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CodingUserInfoKey+Util.swift"; sourceTree = "<group>"; };
+		3FBAEEA224BECD47008F332F /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +99,7 @@
 				3F8D87F024BDD8C900A82D14 /* ViewModel */,
 				3F8D87E724BDD32800A82D14 /* Model */,
 				3F8D87F724BDE60900A82D14 /* View */,
+				3FBAEE9F24BECD1C008F332F /* Utility */,
 				3F8D87E024BDD18300A82D14 /* Network Layer */,
 				3F8D87D524BDC4A300A82D14 /* Assets.xcassets */,
 				3F8D87D724BDC4A300A82D14 /* LaunchScreen.storyboard */,
@@ -115,7 +124,6 @@
 			children = (
 				3F8D87EA24BDD32800A82D14 /* Response.swift */,
 				3F8D87E924BDD32800A82D14 /* User.swift */,
-				3F8D87E824BDD32800A82D14 /* Articles.swift */,
 				3F8D87EB24BDD32800A82D14 /* Article.swift */,
 			);
 			path = Model;
@@ -126,6 +134,8 @@
 			children = (
 				3F8D87F224BDD8C900A82D14 /* ArticleTableViewCellModel.swift */,
 				3F8D87F324BDD8C900A82D14 /* ArticleTableViewModel.swift */,
+				3FBAEE9924BEBA92008F332F /* UserTableViewCellModel.swift */,
+				3FBAEE9B24BEBAA1008F332F /* UserTableViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -134,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				3F8D87F824BDE61700A82D14 /* ArticleTableViewCell.swift */,
+				3FBAEE9D24BEBDC7008F332F /* UserTableViewCell.swift */,
 				3FBAEE9724BEB6B0008F332F /* ProgressView.swift */,
 			);
 			path = View;
@@ -147,6 +158,15 @@
 				3F8D87FA24BE0B9C00A82D14 /* UserProfileViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3FBAEE9F24BECD1C008F332F /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				3FBAEEA024BECD3D008F332F /* CodingUserInfoKey+Util.swift */,
+				3FBAEEA224BECD47008F332F /* CoreDataManager.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,17 +240,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F8D87EC24BDD32800A82D14 /* Articles.swift in Sources */,
 				3F8D87E624BDD18300A82D14 /* EndpointType.swift in Sources */,
+				3FBAEE9A24BEBA92008F332F /* UserTableViewCellModel.swift in Sources */,
 				3F8D87CE24BDC4A300A82D14 /* UsersViewController.swift in Sources */,
 				3F8D87EF24BDD32800A82D14 /* Article.swift in Sources */,
+				3FBAEEA124BECD3D008F332F /* CodingUserInfoKey+Util.swift in Sources */,
 				3F8D87F624BDD8C900A82D14 /* ArticleTableViewModel.swift in Sources */,
 				3F8D87E424BDD18300A82D14 /* JET2API.swift in Sources */,
 				3FBAEE9824BEB6B0008F332F /* ProgressView.swift in Sources */,
+				3FBAEE9C24BEBAA1008F332F /* UserTableViewModel.swift in Sources */,
 				3F8D87CC24BDC4A300A82D14 /* ArticlesViewController.swift in Sources */,
 				3F8D87D424BDC4A300A82D14 /* JET2Test.xcdatamodeld in Sources */,
 				3F8D87F924BDE61700A82D14 /* ArticleTableViewCell.swift in Sources */,
+				3FBAEEA324BECD47008F332F /* CoreDataManager.swift in Sources */,
 				3F8D87FB24BE0B9C00A82D14 /* UserProfileViewController.swift in Sources */,
+				3FBAEE9E24BEBDC7008F332F /* UserTableViewCell.swift in Sources */,
 				3F8D87C824BDC4A300A82D14 /* AppDelegate.swift in Sources */,
 				3F8D87EE24BDD32800A82D14 /* Response.swift in Sources */,
 				3F8D87CA24BDC4A300A82D14 /* SceneDelegate.swift in Sources */,

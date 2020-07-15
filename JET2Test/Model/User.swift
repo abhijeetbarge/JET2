@@ -8,10 +8,11 @@
 
 import Foundation
 
-//struct User: Codable {
-//    let login: String
-//    let url: String
-//    let name: String?
-//    let avatar_url: String?
-//    let bio: String?
-//}
+struct User: Codable {
+    let name: String
+    let designation: String
+    let avatar: String
+    let lastname: String
+    let about: String
+    let city: String
+}

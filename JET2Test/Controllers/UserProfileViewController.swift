@@ -10,7 +10,7 @@ import UIKit
 
 class UserProfileViewController: UIViewController {
     
-    var article: Article?
+    var article: Artical?
     
     @IBOutlet weak var userLogo: UIImageView!
     @IBOutlet weak var fullNameLabel: UILabel!
@@ -21,19 +21,17 @@ class UserProfileViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.title = "User Profile"
         self.setUpUI()
         
     }
     
     func setUpUI() {
-        
-        if let user = self.article?.user,  user.count>0 {
-            self.fullNameLabel.text = "\(user[0].name) \(user[0].lastname)"
-            self.designationLabel.text = user[0].designation
-            self.cityLabel.text = user[0].city
-            self.userLogo.maskCircle(url: user[0].avatar)
-            self.aboutLabel.text = user[0].about
-        }
+        self.fullNameLabel.text = "\(String(describing: article?.name)) \(String(describing: article?.lastname))"
+        self.designationLabel.text = article?.designation
+            self.cityLabel.text = article?.city
+        self.userLogo.maskCircle(url: article?.avatar ?? "")
+            self.aboutLabel.text = article?.about
     }
     
     
