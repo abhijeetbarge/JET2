@@ -19,11 +19,21 @@ class ArticlesViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.title = "Articles"
-        viewModel.getArticals(pageNo:"\(pageNum)" ) { (isNextPageDataAvailable) in
-            self.isNextPageAvailable = isNextPageDataAvailable
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+        if Reachability.isConnectedToNetwork(){
+            print("Internet Connection Available!")
+            viewModel.getArticals(pageNo:"\(pageNum)" ) { (isNextPageDataAvailable) in
+                self.isNextPageAvailable = isNextPageDataAvailable
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
+        }else{
+            print("Internet Connection not Available!")
+            viewModel.getArticalsFromCoreData { (success) in
+                           DispatchQueue.main.async {
+                               self.tableView.reloadData()
+                           }
+                       }
         }
     }
     

@@ -29,6 +29,12 @@
 		3FBAEE9A24BEBA92008F332F /* UserTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEE9924BEBA92008F332F /* UserTableViewCellModel.swift */; };
 		3FBAEE9C24BEBAA1008F332F /* UserTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEE9B24BEBAA1008F332F /* UserTableViewModel.swift */; };
 		3FBAEE9E24BEBDC7008F332F /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEE9D24BEBDC7008F332F /* UserTableViewCell.swift */; };
+		3FBAEEA924BF0AF3008F332F /* Artical+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEEA524BF0AF3008F332F /* Artical+CoreDataClass.swift */; };
+		3FBAEEAA24BF0AF3008F332F /* Artical+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEEA624BF0AF3008F332F /* Artical+CoreDataProperties.swift */; };
+		3FBAEEAB24BF0AF3008F332F /* Users+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEEA724BF0AF3008F332F /* Users+CoreDataClass.swift */; };
+		3FBAEEAC24BF0AF3008F332F /* Users+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEEA824BF0AF3008F332F /* Users+CoreDataProperties.swift */; };
+		3FBAEEAE24BF0F35008F332F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEEAD24BF0F35008F332F /* CoreDataManager.swift */; };
+		3FBAEEB024BF196D008F332F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAEEAF24BF196D008F332F /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +62,12 @@
 		3FBAEE9924BEBA92008F332F /* UserTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCellModel.swift; sourceTree = "<group>"; };
 		3FBAEE9B24BEBAA1008F332F /* UserTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewModel.swift; sourceTree = "<group>"; };
 		3FBAEE9D24BEBDC7008F332F /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		3FBAEEA524BF0AF3008F332F /* Artical+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Artical+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3FBAEEA624BF0AF3008F332F /* Artical+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Artical+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3FBAEEA724BF0AF3008F332F /* Users+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3FBAEEA824BF0AF3008F332F /* Users+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3FBAEEAD24BF0F35008F332F /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		3FBAEEAF24BF196D008F332F /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +107,7 @@
 				3F8D87F024BDD8C900A82D14 /* ViewModel */,
 				3F8D87E724BDD32800A82D14 /* Model */,
 				3F8D87F724BDE60900A82D14 /* View */,
+				3FBAEEA424BF0AD6008F332F /* Core Data */,
 				3F8D87E024BDD18300A82D14 /* Network Layer */,
 				3F8D87D524BDC4A300A82D14 /* Assets.xcassets */,
 				3F8D87D724BDC4A300A82D14 /* LaunchScreen.storyboard */,
@@ -110,6 +123,7 @@
 				3F8D87E124BDD18300A82D14 /* JET2API.swift */,
 				3F8D87E224BDD18300A82D14 /* NetworkManager.swift */,
 				3F8D87E324BDD18300A82D14 /* EndpointType.swift */,
+				3FBAEEAF24BF196D008F332F /* Reachability.swift */,
 			);
 			path = "Network Layer";
 			sourceTree = "<group>";
@@ -153,6 +167,18 @@
 				3F8D87FA24BE0B9C00A82D14 /* UserProfileViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3FBAEEA424BF0AD6008F332F /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				3FBAEEAD24BF0F35008F332F /* CoreDataManager.swift */,
+				3FBAEEA524BF0AF3008F332F /* Artical+CoreDataClass.swift */,
+				3FBAEEA624BF0AF3008F332F /* Artical+CoreDataProperties.swift */,
+				3FBAEEA724BF0AF3008F332F /* Users+CoreDataClass.swift */,
+				3FBAEEA824BF0AF3008F332F /* Users+CoreDataProperties.swift */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,10 +252,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FBAEEAE24BF0F35008F332F /* CoreDataManager.swift in Sources */,
 				3F8D87E624BDD18300A82D14 /* EndpointType.swift in Sources */,
 				3FBAEE9A24BEBA92008F332F /* UserTableViewCellModel.swift in Sources */,
 				3F8D87CE24BDC4A300A82D14 /* UsersViewController.swift in Sources */,
 				3F8D87EF24BDD32800A82D14 /* Article.swift in Sources */,
+				3FBAEEAC24BF0AF3008F332F /* Users+CoreDataProperties.swift in Sources */,
 				3F8D87F624BDD8C900A82D14 /* ArticleTableViewModel.swift in Sources */,
 				3F8D87E424BDD18300A82D14 /* JET2API.swift in Sources */,
 				3FBAEE9824BEB6B0008F332F /* ProgressView.swift in Sources */,
@@ -242,8 +270,12 @@
 				3F8D87C824BDC4A300A82D14 /* AppDelegate.swift in Sources */,
 				3F8D87EE24BDD32800A82D14 /* Response.swift in Sources */,
 				3F8D87CA24BDC4A300A82D14 /* SceneDelegate.swift in Sources */,
+				3FBAEEAB24BF0AF3008F332F /* Users+CoreDataClass.swift in Sources */,
+				3FBAEEAA24BF0AF3008F332F /* Artical+CoreDataProperties.swift in Sources */,
 				3F8D87F524BDD8C900A82D14 /* ArticleTableViewCellModel.swift in Sources */,
 				3F8D87ED24BDD32800A82D14 /* User.swift in Sources */,
+				3FBAEEA924BF0AF3008F332F /* Artical+CoreDataClass.swift in Sources */,
+				3FBAEEB024BF196D008F332F /* Reachability.swift in Sources */,
 				3F8D87E524BDD18300A82D14 /* NetworkManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

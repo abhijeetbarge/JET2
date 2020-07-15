@@ -16,30 +16,33 @@ class ArticleTableViewCellModel {
         self.article = article
     }
 
-    var userName: String {
+    var userName: String? {
         if let user = article.user, user.count > 0 {
             return user[0].name
         }
         return ""
     }
-    var userDesignation: String {
+    var userDesignation: String? {
         if let user = article.user, user.count > 0 {
             return user[0].designation
         }
         return ""
     }
 
-    var userLogoUrl: String {
+    var userLogoUrl: String? {
         if let user = article.user, user.count > 0 {
             return user[0].avatar
         }
         return ""
     }
 
-    var articleContent: String {
+    var id: String? {
+        return article.id
+    }
+    var articleContent: String? {
         return article.content
     }
-    var articleTitle: String {
+    var articleTitle: String? {
         if let media = article.media, media.count > 0 {
             return media[0].title
         }
@@ -48,7 +51,7 @@ class ArticleTableViewCellModel {
 
     var articleUrl: String {
         if let media = article.media, media.count > 0 {
-            return media[0].image
+            return media[0].image ?? ""
         }
         return ""
     }

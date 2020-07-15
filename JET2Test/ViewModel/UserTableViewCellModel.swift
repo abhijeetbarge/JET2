@@ -16,17 +16,20 @@ class UserTableViewCellModel {
         self.user = user
     }
 
-    var userName: String {
+    var id: String? {
+        return user.id
+    }
+    var userName: String? {
         return user.name
     }
-    var userDesignation: String {
+    var userDesignation: String? {
         return user.designation
     }
 
     var userLogoUrl: String {
-       return user.avatar
+       return user.avatar ?? ""
     }
-    var userCity: String {
+    var userCity: String? {
        return user.city
     }
 }

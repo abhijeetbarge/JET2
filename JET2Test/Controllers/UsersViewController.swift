@@ -19,10 +19,19 @@ class UsersViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.title = "Users"
-        viewModel.getUsers(pageNo: "1") { (isNextPageDataAvailable) in
-            self.isNextPageAvailable = isNextPageDataAvailable
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+        if Reachability.isConnectedToNetwork(){
+            
+            viewModel.getUsers(pageNo: "1") { (isNextPageDataAvailable) in
+                self.isNextPageAvailable = isNextPageDataAvailable
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }else{
+            viewModel.getUsersFromCoreData { (success) in
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
     }

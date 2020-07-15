@@ -9,9 +9,8 @@
 import Foundation
 
 struct Article: Codable {
-    let id: String
-    let createdAt: String
-    let content: String
+    let id: String?
+    let content: String?
     let comments: Int
     let likes: Int
     let media: [Media]?
@@ -19,8 +18,8 @@ struct Article: Codable {
 }
 
 struct Media: Codable {
-    let image: String
-    let title: String
-    let url: String
+    let image: String?
+    let title: String?
+    let url: String?
 }
 

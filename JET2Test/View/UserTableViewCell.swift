@@ -20,7 +20,7 @@ class UserTableViewCell: UITableViewCell {
     public var viewModel: UserTableViewCellModel? {
         didSet {
             guard let viewModel = viewModel else { return }
-            userLogo.maskCircle(url:viewModel.userLogoUrl)
+            userLogo.maskCircle(url:viewModel.userLogoUrl,id: viewModel.id,entity: "Users")
             userNameLabel.text = viewModel.userName
             userDesignationLabel.text = viewModel.userDesignation
             cityLabel.text = viewModel.userCity

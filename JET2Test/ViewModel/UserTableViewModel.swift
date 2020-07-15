@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreData
+import UIKit
 
 class UserTableViewModel {
     private let networking = Networking()
@@ -18,6 +20,7 @@ class UserTableViewModel {
         networking.performNetworkTask(endpoint: JET2API.users(pageNo: pageNo),
                                       type: [User].self) { [weak self] (response) in
                                         if response.count > 0 {
+                                            CoreDataManager.shared.saveUsersToCoreData(users: response)
                                             if self?.users == nil {
                                                 self?.users = response
                                             } else {
@@ -31,6 +34,19 @@ class UserTableViewModel {
         }
     }
     
+    
+    func getUsersFromCoreData(completion: ((Bool) -> Void)) {
+        var savedUsers = [User]()
+        let allUsers = CoreDataManager.shared.getDataForEntity(forEntity: "Users") as? [Users]
+        if let users = allUsers {
+            for user in users {
+                let usr = User(id:user.id, name: user.name, designation: user.designation, avatar: user.avatar, lastname: user.lastname, about: user.about, city: user.city,avatarData:user.avatarData )
+                savedUsers.append(usr)
+            }
+        }
+        self.users = savedUsers
+        completion(true)
+    }
     
     
     public func cellViewModel(index: Int) -> UserTableViewCellModel? {

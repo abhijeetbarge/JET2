@@ -27,8 +27,8 @@ class ArticleTableViewCell: UITableViewCell {
     public var viewModel: ArticleTableViewCellModel? {
         didSet {
             guard let viewModel = viewModel else { return }
-            userLogo.maskCircle(url:viewModel.userLogoUrl)
-            articleLogo.setImageFromURl(stringImageUrl:viewModel.articleUrl)
+            userLogo.maskCircle(url:viewModel.userLogoUrl ?? "", id: viewModel.id, entity: "Artical")
+            articleLogo.setImageFromURl(stringImageUrl:viewModel.articleUrl, id: viewModel.id)
             
             userNameLabel.text = viewModel.userName
             userDesignationLabel.text = viewModel.userDesignation
@@ -45,7 +45,10 @@ class ArticleTableViewCell: UITableViewCell {
 
 extension UIImageView {
     
-    func setImageFromURl(stringImageUrl url: String){
+    func setImageFromURl(stringImageUrl url: String,  id:String?){
+        
+        if Reachability.isConnectedToNetwork() {
+
         let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.center = self.center
         activityIndicator.startAnimating()
@@ -59,13 +62,26 @@ extension UIImageView {
                     DispatchQueue.main.async {
                         self.image = UIImage(data: data as Data)
                         activityIndicator.stopAnimating()
+                        if let userId = id {
+                            CoreDataManager.shared.saveArtcleMainImageDataForEntity(forEntity: "Artical", id: userId, data: data as Data)
+                        }
                     }
                 }
             }
         }
+        }else{
+            if let userId = id {
+            if let imageData =  CoreDataManager.shared.getArtcleMainImageDataForEntity(forEntity: "Artical", id: userId) {
+                self.image = UIImage(data: imageData)
+            }
+            }
+        }
     }
     
-    public func maskCircle(url: String) {
+    public func maskCircle(url: String, id:String?, entity:String) {
+        
+        
+        if Reachability.isConnectedToNetwork() {
         DispatchQueue.global(qos: .background).async {
             
             if let url = NSURL(string: url) {
@@ -76,8 +92,22 @@ extension UIImageView {
                         self.layer.masksToBounds = false
                         self.clipsToBounds = true
                         self.image = UIImage(data: data as Data)
+                        if let userId = id {
+                            CoreDataManager.shared.saveUserAvtarDataForEntity(forEntity: entity, id: userId, data: data as Data)
+                        }
                     }
                 }
+            }
+        }
+        }else{
+            if let userId = id {
+            if let imageData =  CoreDataManager.shared.getUserAvtarDataForEntity(forEntity: entity, id: userId) {
+                self.contentMode = UIView.ContentMode.scaleAspectFill
+                self.layer.cornerRadius = self.frame.height / 2
+                self.layer.masksToBounds = false
+                self.clipsToBounds = true
+                self.image = UIImage(data: imageData)
+            }
             }
         }
     }

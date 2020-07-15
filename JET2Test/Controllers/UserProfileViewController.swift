@@ -28,10 +28,13 @@ class UserProfileViewController: UIViewController {
     
     func setUpUI() {
         if let user = article?.user, user.count>0 {
-            self.fullNameLabel.text = "\(String(describing: user[0].name)) \(String(describing: user[0].lastname))"
+            if let firstName = user[0].name, let lastName = user[0].lastname {
+                self.fullNameLabel.text = "\(firstName) \(lastName)"
+
+            }
             self.designationLabel.text = user[0].designation
             self.cityLabel.text = user[0].city
-            self.userLogo.maskCircle(url: user[0].avatar)
+            self.userLogo.maskCircle(url: user[0].avatar ?? "",id: user[0].id ,entity: "Artical")
             self.aboutLabel.text = user[0].about
         }
     }
