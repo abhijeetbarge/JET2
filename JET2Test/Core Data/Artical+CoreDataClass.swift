@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-@objc(Artical)
-public class Artical: NSManagedObject {
+class Artical: NSManagedObject {
 
 }

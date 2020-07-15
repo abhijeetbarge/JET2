@@ -174,6 +174,7 @@ class CoreDataManager: NSObject {
     
      func saveUsersToCoreData (users: [User]) {
         let moc = self.persistentContainer.viewContext
+        moc.performAndWait {
         for user in users {
             let entity = NSEntityDescription.insertNewObject(forEntityName: "Users", into: moc) as! Users
             entity.id = user.id
@@ -185,30 +186,34 @@ class CoreDataManager: NSObject {
             entity.name = user.name
         }
         self.saveContext()
+        }
     }
     
      func saveArticlesToCoreData (articles: [Article]) {
         let moc = self.persistentContainer.viewContext
-        for article in articles {
-            let entity = NSEntityDescription.insertNewObject(forEntityName: "Artical", into: moc) as! Artical
-            entity.id = article.id
-            entity.content = article.content
-            entity.comments = Int64(article.comments)
-            entity.likes = Int64(article.likes)
-            if let user = article.user, user.count>0 {
-                entity.name = user[0].name
-                entity.lastname = user[0].lastname
-                entity.about = user[0].about
-                entity.avatar = user[0].avatar
-                entity.city = user[0].city
-                entity.designation = user[0].designation
+        moc.performAndWait {
+            
+            for article in articles {
+                let entity = NSEntityDescription.insertNewObject(forEntityName: "Artical", into: moc) as! Artical
+                entity.id = article.id
+                entity.content = article.content
+                entity.comments = Int64(article.comments)
+                entity.likes = Int64(article.likes)
+                if let user = article.user, user.count>0 {
+                    entity.name = user[0].name
+                    entity.lastname = user[0].lastname
+                    entity.about = user[0].about
+                    entity.avatar = user[0].avatar
+                    entity.city = user[0].city
+                    entity.designation = user[0].designation
+                }
+                if let media = article.media, media.count>0 {
+                    entity.image = media[0].image
+                    entity.title = media[0].title
+                    entity.url = media[0].url
+                }
             }
-            if let media = article.media, media.count>0 {
-                entity.image = media[0].image
-                entity.title = media[0].title
-                entity.url = media[0].url
-            }
+            self.saveContext()
         }
-        self.saveContext()
     }
 }

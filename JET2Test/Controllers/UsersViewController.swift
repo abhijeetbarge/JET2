@@ -18,6 +18,8 @@ class UsersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 600
         self.title = "Users"
         if Reachability.isConnectedToNetwork(){
             
@@ -68,10 +70,6 @@ extension UsersViewController : UITableViewDelegate,UITableViewDataSource {
             }
         }
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85
     }
 }
 
