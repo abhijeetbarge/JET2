@@ -123,6 +123,7 @@
                                             <outlet property="articleUrlLabel" destination="2Gs-nc-Adq" id="OJ0-0u-jo8"/>
                                             <outlet property="commentLabel" destination="NfA-9Y-UVJ" id="pdo-RB-CUZ"/>
                                             <outlet property="likesLabel" destination="GQI-B5-dx9" id="sgt-FU-SuI"/>
+                                            <outlet property="mainImageHeightConstraint" destination="NND-2m-UXS" id="3HM-wy-AHF"/>
                                             <outlet property="userDesignationLabel" destination="176-By-Azm" id="uuN-lZ-cSA"/>
                                             <outlet property="userLogo" destination="HDi-iT-HKY" id="rt4-hw-1kj"/>
                                             <outlet property="userNameLabel" destination="5Ic-oJ-QEA" id="3Yo-Tk-AYk"/>

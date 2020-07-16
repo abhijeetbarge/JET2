@@ -11,7 +11,7 @@ import UIKit
 class ArticlesViewController: UIViewController {
     private let viewModel = ArticleTableViewModel()
     private var pageNum = 1
-    private var isNextPageAvailable = true
+    private var totalPages = 5
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -23,8 +23,7 @@ class ArticlesViewController: UIViewController {
         self.title = "Articles"
         if Reachability.isConnectedToNetwork(){
             print("Internet Connection Available!")
-            viewModel.getArticals(pageNo:"\(pageNum)" ) { (isNextPageDataAvailable) in
-                self.isNextPageAvailable = isNextPageDataAvailable
+            viewModel.getArticals(pageNo:"\(pageNum)" ) { () in
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -63,7 +62,6 @@ extension ArticlesViewController : UITableViewDelegate,UITableViewDataSource {
                                                        for: indexPath) as? ArticleTableViewCell else {
                                                         return UITableViewCell()
         }
-        
         let cellViewModel = viewModel.cellViewModel(index: indexPath.row)
         cell.viewModel = cellViewModel
         return cell
@@ -72,11 +70,9 @@ extension ArticlesViewController : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == (viewModel.count-1) {
             //This is last cell
-            print("Last page - \(indexPath.row)")
             pageNum += 1
-            if isNextPageAvailable {
-                viewModel.getArticals(pageNo:"\(pageNum)" ) { (isNextPageDataAvailable) in
-                    self.isNextPageAvailable = isNextPageDataAvailable
+            if pageNum <= totalPages {
+                viewModel.getArticals(pageNo:"\(pageNum)" ) { () in
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
@@ -84,9 +80,5 @@ extension ArticlesViewController : UITableViewDelegate,UITableViewDataSource {
             }
         }
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 380
-//    }
 }
 

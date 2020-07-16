@@ -11,7 +11,7 @@ import UIKit
 class ArticleTableViewCell: UITableViewCell {
 
     public static let reuseIdentifier = "ArticleCellID"
-    
+
     @IBOutlet weak var userLogo: UIImageView!
     @IBOutlet weak var articleLogo: UIImageView!
     
@@ -23,12 +23,27 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var articleUrlLabel: UILabel!
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet var mainImageHeightConstraint : NSLayoutConstraint!
+
 
     public var viewModel: ArticleTableViewCellModel? {
         didSet {
             guard let viewModel = viewModel else { return }
             userLogo.maskCircle(url:viewModel.userLogoUrl ?? "", id: viewModel.id, entity: "Artical")
-            articleLogo.setImageFromURl(stringImageUrl:viewModel.articleUrl, id: viewModel.id)
+            
+            if viewModel.articleUrl.count > 0 {
+                articleLogo.setImageFromURl(stringImageUrl: viewModel.articleUrl, id: viewModel.id) { (success) in
+                    if !success {
+                        DispatchQueue.main.async {
+                            self.mainImageHeightConstraint.constant = 0
+                        }
+                    }
+                }
+            }else{
+                DispatchQueue.main.async {
+                    self.mainImageHeightConstraint.constant = 0
+                }
+            }
             
             userNameLabel.text = viewModel.userName
             userDesignationLabel.text = viewModel.userDesignation
@@ -45,7 +60,7 @@ class ArticleTableViewCell: UITableViewCell {
 
 extension UIImageView {
     
-    func setImageFromURl(stringImageUrl url: String,  id:String?){
+    func setImageFromURl(stringImageUrl url: String,  id:String?, completion: @escaping((Bool) -> Void)){
         
         if Reachability.isConnectedToNetwork() {
 
@@ -61,11 +76,14 @@ extension UIImageView {
                 if let data = NSData(contentsOf: url as URL) {
                     DispatchQueue.main.async {
                         self.image = UIImage(data: data as Data)
+                        completion(true)
                         activityIndicator.stopAnimating()
                         if let userId = id {
                             CoreDataManager.shared.saveArtcleMainImageDataForEntity(forEntity: "Artical", id: userId, data: data as Data)
                         }
                     }
+                }else{
+                    completion(false)
                 }
             }
         }

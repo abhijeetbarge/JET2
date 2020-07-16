@@ -34,7 +34,7 @@ class ArticleTableViewModel {
     
     
     public func getArticals(pageNo: String,
-                             completion: ((Bool) -> Void)?) {
+                             completion: (() -> Void)?) {
         print("Fetching data for Page No : \(pageNo)")
         if pageNo == "1" {
             CoreDataManager.shared.clearStorage(forEntity: "Artical")
@@ -48,10 +48,8 @@ class ArticleTableViewModel {
                                             } else {
                                                 self?.articles?.append(contentsOf:response )
                                             }
-                                            completion?(true)
-                                        }else{
-                                            completion?(false)
                                         }
+                                        completion?()
                                         
         }
     }

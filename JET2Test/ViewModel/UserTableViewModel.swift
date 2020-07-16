@@ -15,7 +15,7 @@ class UserTableViewModel {
     private var users: [User]?
     
     public func getUsers(pageNo: String,
-                         completion: ((Bool) -> Void)?) {
+                         completion: (() -> Void)?) {
         print("Fetching data for Page No : \(pageNo)")
         networking.performNetworkTask(endpoint: JET2API.users(pageNo: pageNo),
                                       type: [User].self) { [weak self] (response) in
@@ -26,10 +26,8 @@ class UserTableViewModel {
                                             } else {
                                                 self?.users?.append(contentsOf:response )
                                             }
-                                            completion?(true)
-                                        }else{
-                                            completion?(false)
                                         }
+                                        completion?()
                                         
         }
     }

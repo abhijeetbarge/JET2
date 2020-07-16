@@ -12,7 +12,7 @@ class UsersViewController: UIViewController {
     
     private let viewModel = UserTableViewModel()
     private var pageNum = 1
-    private var isNextPageAvailable = true
+    private var totalPages = 5
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -23,8 +23,7 @@ class UsersViewController: UIViewController {
         self.title = "Users"
         if Reachability.isConnectedToNetwork(){
             
-            viewModel.getUsers(pageNo: "1") { (isNextPageDataAvailable) in
-                self.isNextPageAvailable = isNextPageDataAvailable
+            viewModel.getUsers(pageNo: "1") { () in
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -60,9 +59,8 @@ extension UsersViewController : UITableViewDelegate,UITableViewDataSource {
             //This is last cell
             print("Last page - \(indexPath.row)")
             pageNum += 1
-            if isNextPageAvailable {
-                viewModel.getUsers(pageNo:"\(pageNum)" ) { (isNextPageDataAvailable) in
-                    self.isNextPageAvailable = isNextPageDataAvailable
+            if pageNum <= totalPages {
+                viewModel.getUsers(pageNo:"\(pageNum)" ) { () in
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }

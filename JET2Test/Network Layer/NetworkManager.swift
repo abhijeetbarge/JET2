@@ -15,6 +15,7 @@ struct Networking {
                                         type: T.Type,
                                         completion: ((_ response: T) -> Void)?) {
         let urlString = endpoint.baseURL.appendingPathComponent(endpoint.path).absoluteString.removingPercentEncoding
+        print("Url : \(String(describing: urlString))")
         guard let urlRequest = URL(string: urlString ?? "") else { return }
         
         let progressView = ProgressView(text: "Fetching Data")
